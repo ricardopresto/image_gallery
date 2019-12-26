@@ -11,3 +11,39 @@
   align-items: center;
   justify-items: center;
 }
+
+#frameContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+#frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: appear 0.2s ease-out;
+}
+
+#frame img {
+  height: 80%;
+  width: 80%;
+  opacity: 1;
+}
+
+@keyframes appear {
+  0% {
+    transform: scale(0.5, 0.5);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

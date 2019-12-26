@@ -10,6 +10,8 @@ let images = [
 ];
 
 let thumbsize = 200;
+let container = document.getElementById("container");
+let frameContainer = document.getElementById("frameContainer");
 
 images.forEach(image => {
   let pic = document.createElement("img");
@@ -21,9 +23,19 @@ images.forEach(image => {
       ? (this.style.width = `${thumbsize}px`)
       : (this.style.height = `${thumbsize}px`);
   };
-  document.getElementById("container").appendChild(pic);
+  container.appendChild(pic);
 });
 
 function imageClick(e) {
-  console.log(e.srcElement.id);
+  frameContainer.style.visibility = "visible";
+  let frame = document.createElement("div");
+  frame.id = "frame";
+  let pic = document.createElement("img");
+  pic.src = `./images/${e.srcElement.id}.jpg`;
+  frame.appendChild(pic);
+  frameContainer.appendChild(frame);
+  frameContainer.addEventListener("click", function() {
+    frameContainer.style.visibility = "hidden";
+    frameContainer.removeChild(frameContainer.childNodes[0]);
+  });
 }
