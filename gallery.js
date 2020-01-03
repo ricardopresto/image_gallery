@@ -26,6 +26,11 @@ images.forEach(image => {
   container.appendChild(pic);
 });
 
+frameContainer.addEventListener("click", function() {
+  frameContainer.style.visibility = "hidden";
+  frameContainer.removeChild(frameContainer.children[0]);
+});
+
 function imageClick(e) {
   frameContainer.style.visibility = "visible";
   let frame = document.createElement("div");
@@ -34,8 +39,4 @@ function imageClick(e) {
   pic.src = `./images/${e.srcElement.id}.jpg`;
   frame.appendChild(pic);
   frameContainer.appendChild(frame);
-  frameContainer.addEventListener("click", function() {
-    frameContainer.style.visibility = "hidden";
-    frameContainer.removeChild(frameContainer.childNodes[0]);
-  });
 }
