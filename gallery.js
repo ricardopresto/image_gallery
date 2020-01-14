@@ -10,6 +10,7 @@ let images = [
 ];
 
 let items = [];
+let currentItem;
 
 class GalleryItem {
   constructor(fileName, orientation) {
@@ -49,7 +50,8 @@ frameContainer.addEventListener("click", function() {
 });
 
 function imageClick(e) {
-  let id = e.srcElement.id;
+  let id = Number(e.srcElement.id);
+  currentItem = id;
   frameContainer.style.visibility = "visible";
   let frame = document.createElement("div");
   frame.id = "frame";
@@ -58,6 +60,7 @@ function imageClick(e) {
     : (frame.style.width = frame.style.height = `${window.innerWidth}px`);
   let pic = document.createElement("img");
   pic.src = `./images/${items[id].fileName}.jpg`;
+  pic.draggable = false;
   items[id].orientation == "landscape"
     ? (pic.style.width = "100%")
     : (pic.style.height = "100%");
